@@ -1,5 +1,5 @@
 {
-    "name": "Ssheduardo/Redsys",
+    "name": "ssheduardo/redsys",
     "description": "Pasarela de pago Redsys",
     "keywords": ["sermepa", "payment", "pasarela", "lacaixa", "sabadell", "redsys", "tpv"],
     "homepage": "https://github.com/ssheduardo/Laravel-Redsys",
