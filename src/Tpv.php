@@ -211,7 +211,6 @@ class Tpv
     {
         //Convert Array to Json
         $json = $this->arrayToJson($this->_setParameters);
-        exit($json);
         //Return Json to Base64
         return $this->encodeBase64($json);
     }
