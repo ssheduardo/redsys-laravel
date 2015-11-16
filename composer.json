@@ -1,8 +1,8 @@
 {
-    "name": "ssheduardo/redsys",
+    "name": "ssheduardo/redsys-laravel",
     "description": "Package redsys for laravel 5.1",
     "keywords": ["payment", "pasarela", "lacaixa", "sabadell", "redsys", "tpv"],
-    "homepage": "https://github.com/ssheduardo/Laravel-Redsys",
+    "homepage": "https://github.com/ssheduardo/redsys-laravel",
     "license": "MIT",
     "authors": [
         {
