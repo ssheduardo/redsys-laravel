@@ -4,10 +4,11 @@
 [![Software License][ico-license]](LICENSE.md)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+## Introducción
 
-## Install
+Tras finalizar la actualización de la clases [Redsys][link-redsys] para trabajar con sha256, he aprovechado en crear este package para laravel 5.1, de esta forma hacemos más ameno el trabajar con este framework.
+
+## Instalación
 
 Via Composer
 
@@ -15,9 +16,77 @@ Via Composer
 $ composer require ssheduardo/redsys-laravel
 ```
 
-## Usage
+O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.json
+```bash
+  "ssheduardo/redsys": "1.0.*"
+```
+Ahora debemos cargar nuestro Services Provider dentro del array **'providers'** (config/app.php)
+```php
+Ssheduardo\Redsys\RedsysServiceProvider::class
+```
 
+Creamos un alias dentro del array **'aliases'** (config/app.php)
+```php
+'Redsys'    => Ssheduardo\Redsys\Facades\Redsys::class,
+```
+
+Y finalmente publicamos nuestro archivo de configuración
+```bash
+php artisan vendor:publish --provider="Ssheduardo\Redsys\RedsysServiceProvider"
+```
+
+
+## Uso
+Imaginemos que tenemos esta ruta http://ubublog.com/redsys que enlaza con **RedsysController@index**
+
+```php
+Route::get('/redsys', ['as' => 'redsys', 'uses' => 'RedsysController@index']);
+```
+
+Y el contenido del controlador **RedsysController** sería este:
 ``` php
+<?php
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Ssheduardo\Redsys\Facades\Redsys;
+
+class RedsysController extends Controller
+{
+    //
+    public function index()
+    {
+        try{
+            $key = 'sq7HjrUOBfKmC576ILgskD5srU870gJ7';
+    
+            
+            Redsys::setAmount(rand(10,600));
+            Redsys::setOrder(time());
+            Redsys::setMerchantcode('999008881'); //Reemplazar por el código que proporciona el banco
+            Redsys::setCurrency('978');
+            Redsys::setTransactiontype('0');
+            Redsys::setTerminal('1');
+            Redsys::setVersion('HMAC_SHA256_V1');
+            Redsys::setTradeName('Tienda S.L');
+            Redsys::setTitular('Pedro Risco');
+            Redsys::setProductDescription('Compras varias');
+            Redsys::setEnviroment('test'); //Entorno test
+    
+            $signature = Redsys::generateMerchantSignature($key);
+            Redsys::setMerchantSignature($signature);
+    
+            $form = Redsys::createForm();
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
+        }
+        return $form;
+    }
+}
+
 
 ```
 
@@ -46,3 +115,4 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/ssheduardo/redsys-laravel
 [link-author]: https://github.com/ssheduardo
 [link-contributors]: ../../contributors
+[link-redsys]: https://github.com/ssheduardo/sermepa
