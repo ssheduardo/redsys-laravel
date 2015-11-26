@@ -1,6 +1,23 @@
 # Changelog
 
 All Notable changes to `Redsys` will be documented in this file
+## 1.0.3 (2015-11-26)
+
+### Added
+- In config.php new parameter (key)
+- New method for convert correctly price.
+ 
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
+### Removed
+- In Tpv.php removed injection by default the config.
+
+### Security
+- Nothing
 
 ## 1.0.0 (2015-11-15)
 
