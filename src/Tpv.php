@@ -35,7 +35,7 @@ class Tpv
         $this->_setMethod='T';
         $this->_setSubmit = '';
 
-        $this->_setParameters = array('DS_MERCHANT_URLOK' => config('redsys.url_ok'), 'DS_MERCHANT_URLKO' => config('redsys.url_ko'), 'DS_MERCHANT_MERCHANTURL' => config('redsys.url_notification'));
+        $this->_setParameters = array();
         $this->_setVersion = 'HMAC_SHA256_V1';
         $this->_setNameForm = 'redsys_form';
         $this->_setIdForm = 'redsys_form';
@@ -56,7 +56,7 @@ class Tpv
     public function setAmount($amount)
     {
         if($amount > 0) {
-            $amount = $this->priceToSQL($amount);
+            $amount = $this->convertNumber($amount);
             $amount = intval(strval($amount*100));
 
             $this->_setParameters['DS_MERCHANT_AMOUNT'] = $amount;
@@ -565,6 +565,13 @@ class Tpv
             $price = str_replace('.', '', $price);
         }
         return $price;
+    }
+
+    private function convertNumber($price)
+    {
+        $number=number_format(str_replace(',', '.', $price), 2, '.', '');
+        return $number;
+
     }
 
     /******  Base64 Functions  *****
