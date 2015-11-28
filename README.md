@@ -68,6 +68,7 @@ class RedsysController extends Controller
             Redsys::setCurrency('978');
             Redsys::setTransactiontype('0');
             Redsys::setTerminal('1');
+            Redsys::setMethod('T'); //Solo pago con tarjeta, no mostramos iupay
             Redsys::setNotification(config('redsys.url_notification')); //Url de notificacion
             Redsys::setUrlOk(config('redsys.url_ok')); //Url OK
             Redsys::setUrlKo(config('redsys.url_ko')); //Url KO             
