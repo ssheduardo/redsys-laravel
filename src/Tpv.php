@@ -51,7 +51,7 @@ class Tpv
     /**
      * Set amount (required)
      * @param $amount
-     * @internal param $value
+     * @throws Exception
      */
     public function setAmount($amount)
     {
@@ -379,7 +379,7 @@ class Tpv
     /**
      * Payment type
      *
-     * @param string $method [T = Pago con Tarjeta, R = Pago por Transferencia, D = Domiciliacion] por defecto es T
+     * @param string $method [T = Pago con Tarjeta + iupay , R = Pago por Transferencia, D = Domiciliacion, C = Sólo Tarjeta (mostrará sólo el formulario para datos de tarjeta)] por defecto es T
      * @throws Exception
      */
     public function setMethod($method='T')
@@ -496,6 +496,16 @@ class Tpv
         $decodec = $this->decodeParameters($parameters);
         $decodec_array=$this->JsonToArray($decodec);
         return $decodec_array;
+    }
+
+
+    /**
+     * Return array with all parameters assigned.
+     * @return array
+     */
+    public function getParameters()
+    {
+        return $this->_setParameters;
     }
 
     // ******** UTILS ********
