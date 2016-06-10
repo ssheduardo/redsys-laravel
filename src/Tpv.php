@@ -20,7 +20,8 @@ class Tpv
     private $_setIdSubmit;
     private $_setValueSubmit;
     private $_setStyleSubmit;
-    private $_setSignature;
+    private $_setClassSubmit;
+    private $_setSignature;    
 
     /**
      * Constructor
@@ -43,6 +44,8 @@ class Tpv
         $this->_setIdSubmit = 'btn_submit';
         $this->_setValueSubmit = 'Send';
         $this->_setStyleSubmit = '';
+        $this->_setClassSubmit = '';
+
     }
 
     /************* NEW METHODS ************* */
@@ -419,12 +422,13 @@ class Tpv
      * @param string $value Value submit
      * @param string $style Set Style
      */
-    public function setAttributesSubmit($name = 'btn_submit', $id='btn_submit', $value='Send', $style='')
+    public function setAttributesSubmit($name = 'btn_submit', $id='btn_submit', $value='Send', $style='', $cssClass='')
     {
         $this->_setNameSubmit = $name;
         $this->_setIdSubmit = $id;
         $this->_setValueSubmit = $value;
         $this->_setStyleSubmit = $style;
+        $this->_setClassSubmit = $cssClass;
     }
 
     /**
@@ -448,7 +452,7 @@ class Tpv
                 <input type="hidden" name="Ds_MerchantParameters" value="'.$this->generateMerchantParameters().'"/>
                 <input type="hidden" name="Ds_Signature" value="'.$this->_setSignature.'"/>
                 <input type="hidden" name="Ds_SignatureVersion" value="'.$this->_setVersion.'"/>
-                <input type="submit" name="'.$this->_setNameSubmit.'" id="'.$this->_setIdSubmit.'" value="'.$this->_setValueSubmit.'" style="'.$this->_setStyleSubmit.'" >
+                <input type="submit" name="'.$this->_setNameSubmit.'" id="'.$this->_setIdSubmit.'" value="'.$this->_setValueSubmit.'" '.($this->_setStyleSubmit != '' ? ' style="' . $this->_setStyleSubmit . '"': '').' '.($this->_setClassSubmit != '' ? ' class="' . $this->_setClassSubmit . '"': '').'>
             </form>
         ';
 
@@ -583,7 +587,6 @@ class Tpv
         return $number;
 
     }
-
     /******  Base64 Functions  *****
      * @param $input
      * @return string
@@ -623,4 +626,5 @@ class Tpv
     }
 
     // ******** END UTILS ********
+
 }
