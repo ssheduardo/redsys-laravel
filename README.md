@@ -6,20 +6,34 @@
 
 ## Introducción
 
-Tras finalizar la actualización de la clases [Redsys][link-redsys] para trabajar con sha256, he aprovechado en crear este package para laravel 5.1, de esta forma hacemos más ameno el trabajar con este framework.
+Tras finalizar la actualización de la clases [Redsys][link-redsys] para trabajar con sha256, he aprovechado en crear este package para laravel, de esta forma hacemos más ameno el trabajar con este framework.
 
 ## Instalación
 
 Via Composer
 
+**Laravel 5.1**
 ``` bash
-$ composer require ssheduardo/redsys-laravel
+$ composer require "ssheduardo/redsys-laravel=1.0.*"
+```
+
+**Laravel 5.2 o 5.3**
+``` bash
+$ composer require "ssheduardo/redsys-laravel=~1.1"
 ```
 
 O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.json
+
+**Laravel 5.1**
 ```bash
   "ssheduardo/redsys": "1.0.*"
 ```
+
+**Laravel 5.2 o 5.3**
+```bash
+  "ssheduardo/redsys": "~1.1"
+```
+
 Ahora debemos cargar nuestro Services Provider dentro del array **'providers'** (config/app.php)
 ```php
 Ssheduardo\Redsys\RedsysServiceProvider::class
