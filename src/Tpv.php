@@ -21,7 +21,7 @@ class Tpv
     private $_setValueSubmit;
     private $_setStyleSubmit;
     private $_setClassSubmit;
-    private $_setSignature;    
+    private $_setSignature;
 
     /**
      * Constructor
@@ -50,6 +50,31 @@ class Tpv
 
     /************* NEW METHODS ************* */
 
+    /**
+     * Set identifier required
+     * @param string $value Este parámetro se utilizará para manejar la referencia asociada a los datos de tarjeta. Es un campo alfanumérico de un máximo de 40 posiciones cuyo valor es generado por el TPV Virtual.
+     * @throws Exception
+     */
+    public function setIdentifier($value='REQUIRED')
+    {
+        if(strlen(trim($value)) > 0){
+            $this->_setParameters['DS_MERCHANT_IDENTIFIER'] = $value;
+        }
+        else{
+            throw new Exception('Please add value');
+        }
+
+    }
+
+    public function setMerchantDirectPayment($flat=false)
+    {
+        if(is_bool($flat)) {
+            $this->_setParameters['DS_MERCHANT_DIRECTPAYMENT '] = $flat;
+        }
+        else{
+            throw new Exception('Please set true or false');
+        }
+    }
 
     /**
      * Set amount (required)
@@ -58,14 +83,14 @@ class Tpv
      */
     public function setAmount($amount)
     {
-        if($amount > 0) {
+        if($amount >= 0) {
             $amount = $this->convertNumber($amount);
             $amount = intval(strval($amount*100));
 
             $this->_setParameters['DS_MERCHANT_AMOUNT'] = $amount;
         }
         else {
-            throw new Exception('Amount must be greater than 0.');
+            throw new Exception('Amount must be greater than equal 0.');
         }
     }
 
@@ -510,6 +535,24 @@ class Tpv
     public function getParameters()
     {
         return $this->_setParameters;
+    }
+
+    /**
+     * Return version
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->_setVersion;
+    }
+
+    /**
+     * Return MerchantSignature
+     * @return string
+     */
+    public function getMerchantSignature()
+    {
+        return $this->_setSignature;
     }
 
     // ******** UTILS ********
