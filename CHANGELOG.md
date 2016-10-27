@@ -1,6 +1,29 @@
 # Changelog
 
 All Notable changes to `Redsys` will be documented in this file
+
+## 1.1.1 (2016-10-27)
+
+### Added
+- Updated Tpv.php added new methods for pay for reference
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
+## 1.1 (2016-10-20)
+
+### Added
+- Updated to Larevel 5.2/5.3
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
 ## 1.0.5 (2016-06-11)
 
 ### Added
