@@ -13,7 +13,6 @@ class Tpv
     private $_setNameForm;
     private $_setIdForm;
     private $_setSubmit;
-    private $_setIdioma;
     private $_setParameters;
     private $_setVersion;
     private $_setNameSubmit;
@@ -21,7 +20,7 @@ class Tpv
     private $_setValueSubmit;
     private $_setStyleSubmit;
     private $_setClassSubmit;
-    private $_setSignature;
+    private $_setSignature;    
 
     /**
      * Constructor
@@ -32,7 +31,6 @@ class Tpv
         $this->_setTerminal =1;
         $this->_setMerchantData = '';
         $this->_setTransactionType=0;
-        $this->_setIdioma = '001';
         $this->_setMethod='T';
         $this->_setSubmit = '';
 
@@ -597,7 +595,13 @@ class Tpv
      */
     private function encrypt_3DES($data, $key){
         $iv = "\0\0\0\0\0\0\0\0";
-        $ciphertext = mcrypt_encrypt(MCRYPT_3DES, $key, $data, MCRYPT_MODE_CBC, $iv);
+        $data_padded = $data;
+
+        if (strlen($data_padded) % 8) {
+            $data_padded = str_pad($data_padded,strlen($data_padded) + 8 - strlen($data_padded) % 8, "\0");
+        }
+
+        $ciphertext = openssl_encrypt($data_padded, "DES-EDE3-CBC", $key, OPENSSL_RAW_DATA | OPENSSL_NO_PADDING, $iv);
         return $ciphertext;
     }
 
