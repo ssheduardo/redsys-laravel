@@ -2,6 +2,17 @@
 
 All Notable changes to `Redsys` will be documented in this file
 
+## 1.1.2 (2017-01-27)
+
+### Added
+- Updated Tpv.php - Changed the function mcrypt_encrypt to openssl_encrypt, with the new updated of PHP 7.1 the function mcrypt_encrypt is deprecated.
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
 ## 1.1.1 (2016-10-27)
 
 ### Added
