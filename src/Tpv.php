@@ -3,8 +3,8 @@
 namespace Ssheduardo\Redsys;
 use Exception;
 
-class Tpv
-{
+class Tpv{
+
     private $_setEnviroment;
     private $_setMerchantData;
     private $_setTerminal;
@@ -20,7 +20,7 @@ class Tpv
     private $_setValueSubmit;
     private $_setStyleSubmit;
     private $_setClassSubmit;
-    private $_setSignature;    
+    private $_setSignature;
 
     /**
      * Constructor
@@ -93,17 +93,18 @@ class Tpv
     }
 
     /**
-     * Set Order number - [The firsts 4 digits must be numeric.] (required)
+     * Set Order number - [The first 4 digits must be numeric.] (required)
      * @param $order
      * @throws Exception
      */
     public function setOrder($order)
     {
-        if(strlen(trim($order)) > 0){
+        $order = trim($order);
+        if(strlen($order) > 0 && strlen($order) <= 12 && is_numeric(substr($order,0,4)) ){
             $this->_setParameters['DS_MERCHANT_ORDER'] = $order;
         }
         else{
-            throw new Exception('Add Order');
+            throw new Exception('Order id must be a 4 digit string at least, maximum 12 characters.');
         }
     }
 
@@ -417,6 +418,55 @@ class Tpv
             throw new Exception('Add pay method');
         }
     }
+
+    /**
+     * Card number
+     *
+     * @param $pan Tarjeta. Su longitud depende del tipo de tarjeta.
+     * @throws Exception
+     */
+    public function setPan($pan)
+    {
+        if (intval($pan) != 0){
+            $this->_setParameters['DS_MERCHANT_PAN'] = $pan;
+        }
+        else{
+            throw new Exception('Pan not valid');
+        }
+    }
+
+    /**
+     * Expire date
+     *
+     * @param $expirydate . Caducidad de la tarjeta. Su formato es AAMM, siendo AA los dos últimos dígitos del año y MM los dos dígitos del mes.
+     * @throws Exception
+     */
+    public function setExpiryDate($expirydate)
+    {
+        if (strlen(trim($expirydate)) == 4){
+            $this->_setParameters['DS_MERCHANT_EXPIRYDATE'] = $expirydate;
+        }
+        else{
+            throw new Exception('Expire date is not valid');
+        }
+    }
+
+    /**
+     * CVV2 card
+     *
+     * @param $cvv2 Código CVV2 de la tarjeta
+     * @throws Exception
+     */
+    public function setCVV2($cvv2)
+    {
+        if (intval($cvv2) != 0){
+            $this->_setParameters['DS_MERCHANT_CVV2'] = $cvv2;
+        }
+        else{
+            throw new Exception('CVV2 is not valid');
+        }
+    }
+
 
     /**
      * Set name to form
