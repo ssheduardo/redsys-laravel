@@ -44,10 +44,11 @@ Creamos un alias dentro del array **'aliases'** (config/app.php)
 'Redsys'    => Ssheduardo\Redsys\Facades\Redsys::class,
 ```
 
-Y finalmente publicamos nuestro archivo de configuración
+Y finalmente publicamos nuestro archivo de configuración 
 ```bash
 php artisan vendor:publish --provider="Ssheduardo\Redsys\RedsysServiceProvider"
 ```
+Esto nos creara un archivo llamado redsys.php dentro de config, en este archivo debemos configurar nuestra key, url ok y ko. 
 
 
 ## Uso
@@ -106,6 +107,9 @@ class RedsysController extends Controller
 
 
 ```
+
+Esta clase hereda de mi clase principal https://github.com/ssheduardo/sermepa, aquí encontrarán más ejemplos de los métodos que trae la clase **Tvp.php**
+
 
 ## Change log
 
