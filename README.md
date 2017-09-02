@@ -17,9 +17,13 @@ Via Composer
 $ composer require "ssheduardo/redsys-laravel=1.0.*"
 ```
 
-**Laravel 5.2 o 5.3**
+**Laravel 5.2, 5.3, 5.4**
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.1"
+```
+**Laravel 5.5**
+``` bash
+$ composer require "ssheduardo/redsys-laravel=~1.2"
 ```
 
 O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.json
@@ -29,17 +33,23 @@ O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.js
   "ssheduardo/redsys": "1.0.*"
 ```
 
-**Laravel 5.2 o 5.3**
+**Laravel 5.2, 5.3, 5.4**
 ```bash
   "ssheduardo/redsys": "~1.1"
 ```
+**Laravel 5.5**
+```bash
+  "ssheduardo/redsys": "~1.2"
+```
 
 Ahora debemos cargar nuestro Services Provider dentro del array **'providers'** (config/app.php)
+>Si usas Laravel 5.5, no necesitas cargar el services provider
 ```php
 Ssheduardo\Redsys\RedsysServiceProvider::class
 ```
 
 Creamos un alias dentro del array **'aliases'** (config/app.php)
+>Si usas Laravel 5.5 no necesitas crear el alias
 ```php
 'Redsys'    => Ssheduardo\Redsys\Facades\Redsys::class,
 ```
@@ -48,7 +58,7 @@ Y finalmente publicamos nuestro archivo de configuración
 ```bash
 php artisan vendor:publish --provider="Ssheduardo\Redsys\RedsysServiceProvider"
 ```
-Esto nos creara un archivo llamado redsys.php dentro de config, en este archivo debemos configurar nuestra key, url ok y ko. 
+>Esto nos creara un archivo llamado *redsys.php* dentro de config, en este archivo debemos configurar nuestra key, url ok y ko. 
 
 
 ## Uso

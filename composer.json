@@ -21,5 +21,15 @@
             "Ssheduardo\\Redsys\\": "src"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ssheduardo\\Redsys\\RedsysServiceProvider"
+            ],
+            "aliases": {
+                "Redsys": "Ssheduardo\\Redsys\\Facades\\Redsys"
+            }
+        }
+    }
 }

@@ -1,6 +1,17 @@
 # Changelog
 
 All Notable changes to `Redsys` will be documented in this file
+## 1.2 (2017-09-02)
+
+### Added
+- Update to Laravel 5.5 auto package discovery 
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
 ## 1.1.3 (2017-06-29)
 
 ### Added
