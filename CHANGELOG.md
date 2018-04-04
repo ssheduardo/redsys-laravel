@@ -1,10 +1,22 @@
 # Changelog
 
 All Notable changes to `Redsys` will be documented in this file
+
+## 1.2.1 (2018-04-04)
+
+### Added
+- Updated Tpv.php, changed validation for setCurrency, not limit to 978, 840, 826, 392
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
 ## 1.2 (2017-09-02)
 
 ### Added
-- Update to Laravel 5.5 auto package discovery 
+- Update to Laravel 5.5 auto package discovery
 
 ### Deprecated
 - Nothing
@@ -15,7 +27,7 @@ All Notable changes to `Redsys` will be documented in this file
 ## 1.1.3 (2017-06-29)
 
 ### Added
-- Updated Tpv.php, added new methods: setPan, setExpiryDate and setCVV2 
+- Updated Tpv.php, added new methods: setPan, setExpiryDate and setCVV2
 
 ### Deprecated
 - Nothing
@@ -86,7 +98,7 @@ All Notable changes to `Redsys` will be documented in this file
 ### Added
 - In config.php new parameter (key)
 - New method for convert correctly price.
- 
+
 ### Deprecated
 - Nothing
 
