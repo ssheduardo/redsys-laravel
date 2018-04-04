@@ -155,13 +155,11 @@ class Tpv{
      */
     public function setCurrency($currency=978)
     {
-        if($currency == '978' || $currency =='840' || $currency =='826' || $currency =='392' ){
-            $this->_setParameters['DS_MERCHANT_CURRENCY'] = $currency;
-        }
-        else{
+        if (!preg_match('/^[0-9]{3}$/', $currency)) {
             throw new Exception('Currency is not valid');
         }
 
+        $this->_setParameters['DS_MERCHANT_CURRENCY'] = $currency;
     }
 
     /**
