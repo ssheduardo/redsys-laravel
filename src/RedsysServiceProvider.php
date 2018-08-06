@@ -2,6 +2,7 @@
 
 namespace Ssheduardo\Redsys;
 
+use Sermepa\Tpv\Tpv;
 use Illuminate\Support\ServiceProvider;
 
 class RedsysServiceProvider extends ServiceProvider
