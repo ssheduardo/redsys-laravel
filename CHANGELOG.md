@@ -2,6 +2,17 @@
 
 All Notable changes to `Redsys` will be documented in this file
 
+## 1.3 (2018-08-06)
+
+### Added
+- Library Redsys with composer
+
+### Deprecated
+- Tpv.php
+
+### Fixed
+- Nothing
+
 ## 1.2.1 (2018-04-04)
 
 ### Added

@@ -14,7 +14,8 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/support": "5.*"
+        "illuminate/support": "5.*",
+        "sermepa/sermepa": "^1.2"
     },
     "autoload": {
         "psr-4": {
