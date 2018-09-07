@@ -2,6 +2,17 @@
 
 All Notable changes to `Redsys` will be documented in this file
 
+## 1.3.1 (2018-09-07)
+
+### Added
+- Changed config.php, uses env variables
+
+### Deprecated
+- Nothing
+
+### Fixed
+- Nothing
+
 ## 1.3 (2018-08-06)
 
 ### Added
