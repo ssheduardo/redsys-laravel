@@ -58,8 +58,7 @@ Y finalmente publicamos nuestro archivo de configuración
 ```bash
 php artisan vendor:publish --provider="Ssheduardo\Redsys\RedsysServiceProvider"
 ```
->Esto nos creara un archivo llamado *redsys.php* dentro de config, en este archivo debemos configurar nuestra key, url ok y ko. 
-
+>Esto nos creará un archivo llamado *redsys.php* dentro de config, en este archivo debemos configurar nuestra key, url ok y ko. 
 
 ## Uso
 Imaginemos que tenemos esta ruta http://ubublog.com/redsys que enlaza con **RedsysController@index**
@@ -119,6 +118,33 @@ class RedsysController extends Controller
 ```
 
 Esta clase hereda de mi clase principal https://github.com/ssheduardo/sermepa, aquí encontrarán más ejemplos de los métodos que trae la clase **Tvp.php**
+
+## Notas adicionales
+
+Dentro del archivo /config/redsys.php, se debe configurar el FUC (Merchant Code) y nuestra key. Puntos a tener en cuenta de la configuración si no has trabajado con redsys-laravel anteriormente:
+
+- Si queremos usar el entorno de producción debemos usar el string 'live' como environment. 
+
+- El FUC en el entorno de pruebas debe ser real, de otro modo se obtendrá el error de importe 0 (https://github.com/ssheduardo/redsys-laravel#20)
+
+- La url OK ('url_ok') se usa para redireccionar tras un pago correcto (no contiene información del pago), lo mismo ocurre con la url de KO ('url_ko'). La url que tiene información del pago realizado es la URL de notificación ('url_notification') que deberá comprobar la firma de la información del siguiente modo:
+
+```php
+  $key = config('redsys.key');
+  $parameters = Redsys::getMerchantParameters($request->input('Ds_MerchantParameters'));
+  $DsResponse = $parameters["Ds_Response"];
+  $DsResponse += 0;
+
+  if (Redsys::check($key, $request->input()) && $DsResponse <= 99) {
+      // lo que quieras que haya si es positiva la confirmación de redsys
+
+
+  } else {
+      //lo que quieras que haga si no es positivo
+
+  }
+
+```
 
 
 ## Change log
