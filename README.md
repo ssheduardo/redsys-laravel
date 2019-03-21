@@ -21,7 +21,7 @@ $ composer require "ssheduardo/redsys-laravel=1.0.*"
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.1"
 ```
-**Laravel 5.5**
+**Laravel 5.5, 5.6**
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.2"
 ```
@@ -37,28 +37,28 @@ O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.js
 ```bash
   "ssheduardo/redsys": "~1.1"
 ```
-**Laravel 5.5**
+**Laravel 5.5, 5.6**
 ```bash
   "ssheduardo/redsys": "~1.2"
 ```
 
 Ahora debemos cargar nuestro Services Provider dentro del array **'providers'** (config/app.php)
->Si usas Laravel 5.5, no necesitas cargar el services provider
+>Si usas Laravel 5.5 o superior, no necesitas cargar el services provider
 ```php
 Ssheduardo\Redsys\RedsysServiceProvider::class
 ```
 
 Creamos un alias dentro del array **'aliases'** (config/app.php)
->Si usas Laravel 5.5 no necesitas crear el alias
+>Si usas Laravel 5.5 o superior no necesitas crear el alias
 ```php
 'Redsys'    => Ssheduardo\Redsys\Facades\Redsys::class,
 ```
 
-Y finalmente publicamos nuestro archivo de configuración 
+Y finalmente publicamos nuestro archivo de configuración
 ```bash
 php artisan vendor:publish --provider="Ssheduardo\Redsys\RedsysServiceProvider"
 ```
->Esto nos creará un archivo llamado *redsys.php* dentro de config, en este archivo debemos configurar nuestra key, url ok y ko. 
+>Esto nos creará un archivo llamado *redsys.php* dentro de config, en este archivo debemos configurar nuestra key, url ok y ko.
 
 ## Uso
 Imaginemos que tenemos esta ruta http://ubublog.com/redsys que enlaza con **RedsysController@index**
@@ -85,7 +85,7 @@ class RedsysController extends Controller
     {
         try{
             $key = config('redsys.key');
-              
+
             Redsys::setAmount(rand(10,600));
             Redsys::setOrder(time());
             Redsys::setMerchantcode('999008881'); //Reemplazar por el código que proporciona el banco
@@ -95,16 +95,16 @@ class RedsysController extends Controller
             Redsys::setMethod('T'); //Solo pago con tarjeta, no mostramos iupay
             Redsys::setNotification(config('redsys.url_notification')); //Url de notificacion
             Redsys::setUrlOk(config('redsys.url_ok')); //Url OK
-            Redsys::setUrlKo(config('redsys.url_ko')); //Url KO             
+            Redsys::setUrlKo(config('redsys.url_ko')); //Url KO
             Redsys::setVersion('HMAC_SHA256_V1');
             Redsys::setTradeName('Tienda S.L');
             Redsys::setTitular('Pedro Risco');
             Redsys::setProductDescription('Compras varias');
             Redsys::setEnviroment('test'); //Entorno test
-    
+
             $signature = Redsys::generateMerchantSignature($key);
             Redsys::setMerchantSignature($signature);
-    
+
             $form = Redsys::createForm();
         }
         catch(Exception $e){
@@ -123,7 +123,7 @@ Esta clase hereda de mi clase principal https://github.com/ssheduardo/sermepa, a
 
 Dentro del archivo /config/redsys.php, se debe configurar el FUC (Merchant Code) y nuestra key. Puntos a tener en cuenta de la configuración si no has trabajado con redsys-laravel anteriormente:
 
-- Si queremos usar el entorno de producción debemos usar el string 'live' como environment. 
+- Si queremos usar el entorno de producción debemos usar el string 'live' como environment.
 
 - El FUC en el entorno de pruebas debe ser real, de otro modo se obtendrá el error de importe 0 (https://github.com/ssheduardo/redsys-laravel#20)
 
