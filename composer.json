@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "laravel/framework": "^6.0",
+        "laravel/framework": "^6.0|^7.0",
         "sermepa/sermepa": "^1.2"
     },
     "autoload": {

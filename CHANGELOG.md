@@ -2,7 +2,12 @@
 
 All Notable changes to `Redsys` will be documented in this file
 
-## 1.4 (2019-09-11)
+## 1.4.1 (2020-04-15)
+
+### Added
+- Updated README (testing in Laravel 7)
+
+## 1.4.0 (2019-09-11)
 
 ### Added
 - Updated README (testing in Laravel 6.0)
