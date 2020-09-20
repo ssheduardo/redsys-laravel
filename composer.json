@@ -1,6 +1,6 @@
 {
     "name": "ssheduardo/redsys-laravel",
-    "description": "Package redsys for laravel 5.1",
+    "description": "Package redsys for laravel 8",
     "keywords": ["payment", "pasarela", "lacaixa", "sabadell", "redsys", "tpv"],
     "homepage": "https://github.com/ssheduardo/redsys-laravel",
     "license": "MIT",
@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "laravel/framework": "^6.0|^7.0",
+        "laravel/framework": "^6.0|^7.0|^8.0",
         "sermepa/sermepa": "^1.2"
     },
     "autoload": {
