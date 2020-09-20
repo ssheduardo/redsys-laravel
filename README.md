@@ -25,7 +25,7 @@ $ composer require "ssheduardo/redsys-laravel=~1.1.0"
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.3.0"
 ```
-**Laravel 6.0, 7.x**
+**Laravel 6.0, 7.x, 8.x**
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.4.0"
 ```
@@ -46,7 +46,7 @@ O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.js
   "ssheduardo/redsys": "~1.3.0"
 ```
 
- **Laravel 6.0, 7.x**
+ **Laravel 6.0, 7.x, 8.x**
 ```bash
   "ssheduardo/redsys": "~1.4.0"
 ```
