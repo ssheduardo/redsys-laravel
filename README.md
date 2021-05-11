@@ -34,21 +34,21 @@ O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.js
 
 **Laravel 5.1**
 ```bash
-  "ssheduardo/redsys": "1.0.*"
+  "ssheduardo/redsys-laravel": "1.0.*"
 ```
 
 **Laravel 5.2, 5.3, 5.4**
 ```bash
-  "ssheduardo/redsys": "~1.1.0"
+  "ssheduardo/redsys-laravel": "~1.1.0"
 ```
 **Laravel 5.5, 5.6, 5.7, 5.8**
 ```bash
-  "ssheduardo/redsys": "~1.3.0"
+  "ssheduardo/redsys-laravel": "~1.3.0"
 ```
 
  **Laravel 6.0, 7.x, 8.x**
 ```bash
-  "ssheduardo/redsys": "~1.4.0"
+  "ssheduardo/redsys-laravel": "~1.4.0"
 ```
 
 Ahora debemos cargar nuestro Services Provider dentro del array **'providers'** (config/app.php)
@@ -172,6 +172,16 @@ If you discover any security related issues, please email :author_email instead 
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+## Donación
+
+¿Te gustaría apoyarme?
+¿Aprecias mi trabajo?
+¿Lo usas en proyectos comerciales?
+
+¡Siéntete libre de hacer una pequeña [donación](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ssh%2eeduardo%40gmail%2ecom&lc=ES&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)! :wink:
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ssh%2eeduardo%40gmail%2ecom&lc=ES&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
 [ico-version]: https://img.shields.io/packagist/v/ssheduardo/redsys-laravel.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
