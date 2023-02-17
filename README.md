@@ -25,7 +25,7 @@ $ composer require "ssheduardo/redsys-laravel=~1.1.0"
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.3.0"
 ```
-**Laravel 6.0, 7.x, 8.x, 9.x**
+**Laravel 6.0, 7.x, 8.x, 9.x, 10.x**
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.4.0"
 ```
@@ -46,7 +46,7 @@ O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.js
   "ssheduardo/redsys-laravel": "~1.3.0"
 ```
 
- **Laravel 6.0, 7.x, 8.x, 9.x**
+ **Laravel 6.0, 7.x, 8.x, 9.x, 10.x**
 ```bash
   "ssheduardo/redsys-laravel": "~1.4.0"
 ```
@@ -73,31 +73,34 @@ php artisan vendor:publish --provider="Ssheduardo\Redsys\RedsysServiceProvider"
 Imaginemos que tenemos esta ruta http://ubublog.com/redsys que enlaza con **RedsysController@index**
 
 ```php
-Route::get('/redsys', ['as' => 'redsys', 'uses' => 'RedsysController@index']);
+
+Route::controller(RedsysController::class)->prefix('redsys')
+    ->group(function () {
+        Route::get('/', 'index');
+    });
 ```
 
 Y el contenido del controlador **RedsysController** sería este:
 ``` php
 <?php
+
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Ssheduardo\Redsys\Facades\Redsys;
 
 class RedsysController extends Controller
 {
-    //
     public function index()
     {
-        try{
+        try {
             $key = config('redsys.key');
+            $code = config('redsys.merchantcode');
 
-            Redsys::setAmount(rand(10,600));
+            Redsys::setAmount(rand(10, 600));
             Redsys::setOrder(time());
-            Redsys::setMerchantcode('999008881'); //Reemplazar por el código que proporciona el banco
+            Redsys::setMerchantcode($code); //Reemplazar por el código que proporciona el banco
             Redsys::setCurrency('978');
             Redsys::setTransactiontype('0');
             Redsys::setTerminal('1');
@@ -115,16 +118,19 @@ class RedsysController extends Controller
             Redsys::setMerchantSignature($signature);
 
             $form = Redsys::createForm();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
-        return $form;
+        return view('redsys', compact('form'));
     }
 }
 
 
 ```
+Podemos hacer un pequeño diseño usando una plantilla blade quedando algo así
+
+![image](https://user-images.githubusercontent.com/1160138/219521074-86ceb930-e7c9-4008-bcca-e7a8aab0c1fa.png)
+
 
 Esta clase hereda de mi clase principal https://github.com/ssheduardo/sermepa, aquí encontrarán más ejemplos de los métodos que trae la clase **Tvp.php**
 
