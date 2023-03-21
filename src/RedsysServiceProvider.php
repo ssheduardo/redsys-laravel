@@ -34,7 +34,7 @@ class RedsysServiceProvider extends ServiceProvider
         });
 
         // Merge default config values
-        $this->mergeConfigFrom(__DIR__.'/config/redsys.php', 'redsys');
+        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'redsys');
 
     }
 }

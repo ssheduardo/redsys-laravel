@@ -65,7 +65,7 @@ Creamos un alias dentro del array **'aliases'** (config/app.php)
 
 Y finalmente publicamos nuestro archivo de configuración
 ```bash
-php artisan vendor:publish --provider="Ssheduardo\Redsys\RedsysServiceProvider"
+php artisan vendor:publish --tag="redsys-config"
 ```
 >Esto nos creará un archivo llamado *redsys.php* dentro de config, en este archivo debemos configurar nuestra key, url ok y ko.
 
