@@ -18,7 +18,7 @@ class RedsysServiceProvider extends ServiceProvider
         $this->publishes(
             [
                 __DIR__ . '/config/config.php' => config_path('redsys.php'),
-            ], 'config'
+            ], 'redsys-config'
         );
     }
 
@@ -32,6 +32,9 @@ class RedsysServiceProvider extends ServiceProvider
         $this->app->bind('tpv', function () {
             return new Tpv();
         });
+
+        // Merge default config values
+        $this->mergeConfigFrom(__DIR__.'/config/redsys.php', 'redsys');
 
     }
 }
