@@ -2,13 +2,18 @@
 
 All Notable changes to `Redsys` will be documented in this file
 
+## 1.4.6 (2024-05-02)
+
+### Added
+- Updated README (testing in Laravel 11)
+
 ## 1.4.5 (2023-03-22)
 
 ### Added
 - Updated README (publish config)
 - Added mergeConfigFrom
 - Changed name tag config to redsys-config
-  
+
 ## 1.4.4 (2023-02-17)
 
 ### Added
