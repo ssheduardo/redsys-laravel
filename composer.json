@@ -1,6 +1,7 @@
 {
     "name": "ssheduardo/redsys-laravel",
     "description": "Package redsys for laravel",
+    "type": "library",
     "keywords": ["payment", "pasarela", "lacaixa", "sabadell", "redsys", "tpv"],
     "homepage": "https://github.com/ssheduardo/redsys-laravel",
     "license": "MIT",
@@ -17,12 +18,25 @@
         "laravel/framework": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
         "sermepa/sermepa": "^1.4"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0|^11.0",
+        "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0"
+    },
     "autoload": {
         "psr-4": {
             "Ssheduardo\\Redsys\\": "src"
         }
     },
-    "minimum-stability": "stable",
+    "autoload-dev": {
+        "psr-4": {
+            "Ssheduardo\\Redsys\\Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "extra": {
         "laravel": {
             "providers": [
