@@ -3,6 +3,14 @@
 .env.php
 .env
 
+# Dependencies
+/vendor/
+/.PhpStorm2019.1/
+
+# Testing
+/.phpunit.cache/
+.phpunit.result.cache
+
 # OS generated files #
 ######################
 .DS_Store
