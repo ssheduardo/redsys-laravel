@@ -25,9 +25,9 @@ $ composer require "ssheduardo/redsys-laravel=~1.1.0"
 ``` bash
 $ composer require "ssheduardo/redsys-laravel=~1.3.0"
 ```
-**Laravel 6.0, 7.x, 8.x, 9.x, 10.x, 11.x, 12,x**
+**Laravel 6.0, 7.x, 8.x, 9.x, 10.x, 11.x, 12.x, 13.x**
 ``` bash
-$ composer require "ssheduardo/redsys-laravel=~1.4.0"
+$ composer require "ssheduardo/redsys-laravel=~1.5.0"
 ```
 
 O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.json
@@ -46,9 +46,9 @@ O si lo prefieres, puedes agregarlo en la sección **require** de tu composer.js
   "ssheduardo/redsys-laravel": "~1.3.0"
 ```
 
- **Laravel 6.0, 7.x, 8.x, 9.x, 10.x, 11.x, 12,x**
+ **Laravel 6.0, 7.x, 8.x, 9.x, 10.x, 11.x, 12.x, 13.x**
 ```bash
-  "ssheduardo/redsys-laravel": "~1.4.0"
+  "ssheduardo/redsys-laravel": "~1.5.0"
 ```
 
 Ahora debemos cargar nuestro Services Provider dentro del array **'providers'** (config/app.php)

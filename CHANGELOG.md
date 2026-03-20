@@ -2,6 +2,13 @@
 
 All Notable changes to `Redsys` will be documented in this file
 
+## 1.5.0 (2026-03-21)
+
+### Added
+- Laravel 13 compatibility
+- PHPUnit configuration for package testing
+- Composer script for running package tests
+
 ## 1.4.7 (2025-05-09)
 
 ### Added
